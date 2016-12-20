@@ -1,0 +1,8 @@
+version: '2'
+services:
+  #nifi
+  nifi:
+    image: mkobit/nifi
+    container_name: nifi
+    ports:
+      - "8080:8080"
