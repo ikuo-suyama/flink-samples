@@ -71,7 +71,7 @@ nifi@637092c64bd9:/opt/nifi/data/tweets.txt$ cat 4555959607426.json
 デバッグは超絶しづらいです。
 空文字とか改行とかが入るとうまく動かないので注意！Twitterで401出ると思ったら、AccessTokenにタブ入ってました。
 
-Kafka
+## 3. Kafka
 
 docker-composeに追加したので、docker-composeコマンドでかんたんに起動できます
 ```
@@ -91,3 +91,6 @@ $KAFKA_HOME/bin/kafka-topics.sh --create --topic tweet_conversation_topic \
 # consume
 $KAFKA_HOME/bin/kafka-console-consumer.sh --zookeeper localhost --topic tweet_conversation_topic --from-beginning
 ```
+
+## 4. Flink
+長いので[README](flink-sample-scala/README.md)切り出しました
