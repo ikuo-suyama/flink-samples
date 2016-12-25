@@ -1,13 +1,14 @@
 version: '2'
 services:
   #nifi
-  nifi:
+  nifi4flink:
     image: mkobit/nifi
-    container_name: nifi
+    container_name: nifi4flink
     ports:
       - "8080:8080"
+
   #kafka
-  kafka:
+  kafka4flink:
     build: kafka
     ports:
       - "2181:2181"
@@ -16,4 +17,4 @@ services:
       # this is DockerHost Ip for boot2docker(Only For Mac)
       ADVERTISED_HOST: "192.168.99.100"
       ADVERTISED_PORT: 9092
-    container_name: kafka
+    container_name: kafka4flink
