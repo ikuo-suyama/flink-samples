@@ -6,3 +6,14 @@ services:
     container_name: nifi
     ports:
       - "8080:8080"
+  #kafka
+  kafka:
+    build: kafka
+    ports:
+      - "2181:2181"
+      - "9092:9092"
+    environment:
+      # this is DockerHost Ip for boot2docker(Only For Mac)
+      ADVERTISED_HOST: "192.168.99.100"
+      ADVERTISED_PORT: 9092
+    container_name: kafka
