@@ -11,7 +11,9 @@ import com.typesafe.config.{Config, ConfigFactory}
 import org.apache.flink.api.scala._
 import org.apache.flink.streaming.api.scala.{DataStream, StreamExecutionEnvironment}
 import org.apache.flink.streaming.api.windowing.time.Time
+import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer08
 import org.apache.flink.streaming.connectors.twitter.TwitterSource
+import org.apache.flink.streaming.util.serialization.SimpleStringSchema
 
 import scala.concurrent.{ExecutionContext, Await}
 import scala.concurrent.duration._
@@ -86,10 +88,15 @@ object WordcountFromTwitter {
         case _ => false
       })
       .map(_ match {
-        case Some((t, r)) => (t, r)
+        case Some((t, r)) => (t, r).toString
       })
 
     tweetsStream.print
+    tweetsStream.addSink(
+      new FlinkKafkaProducer08[String](
+        "docker.host:9092",
+        "tweet_conversation_topic",
+        new SimpleStringSchema()))
 
     env.execute("Twitter Stream Collect Conversation")
 

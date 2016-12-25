@@ -14,6 +14,8 @@ libraryDependencies ++= {
 
     // Flink twitter connector
     "org.apache.flink"             %% "flink-connector-twitter"            % flinkVersion,
+    // Flink Kafka Connecto
+    "org.apache.flink"             %% "flink-connector-kafka-0.8"          % flinkVersion,
 
     // Jackson
     "com.fasterxml.jackson.core"    % "jackson-databind"                   % "2.8.4",
