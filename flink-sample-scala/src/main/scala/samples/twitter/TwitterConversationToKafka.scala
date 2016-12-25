@@ -1,4 +1,4 @@
-package samples.wordcount
+package samples.twitter
 
 import java.util.Properties
 
@@ -7,21 +7,20 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.databind.{DeserializationFeature, ObjectMapper}
 import com.fasterxml.jackson.module.scala.DefaultScalaModule
-import com.typesafe.config.{Config, ConfigFactory}
+import com.typesafe.config.ConfigFactory
 import org.apache.flink.api.scala._
 import org.apache.flink.streaming.api.scala.{DataStream, StreamExecutionEnvironment}
-import org.apache.flink.streaming.api.windowing.time.Time
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer08
 import org.apache.flink.streaming.connectors.twitter.TwitterSource
 import org.apache.flink.streaming.util.serialization.SimpleStringSchema
 
-import scala.concurrent.{ExecutionContext, Await}
+import scala.concurrent.Await
 import scala.concurrent.duration._
 
 /**
  * Created by Ikuo Suyama on 16/12/25.
  */
-object WordcountFromTwitter {
+object TwitterConversationToKafka {
   // Object定義でないと[org.apache.flink.api.common.InvalidProgramException: Task not serializable]
   val jsonMapper = new ObjectMapper
   jsonMapper.registerModule(DefaultScalaModule)
