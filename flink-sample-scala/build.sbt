@@ -21,6 +21,9 @@ libraryDependencies ++= {
     "com.fasterxml.jackson.core"    % "jackson-databind"                   % "2.8.4",
     "com.fasterxml.jackson.module" %% "jackson-module-scala"               % "2.8.4",
 
+    // guava
+    "com.google.guava" % "guava" % "19.0",
+
     // Twitter4s
     "com.danielasfregola"          %% "twitter4s"                          % "3.0",
 
