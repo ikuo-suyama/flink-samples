@@ -94,3 +94,25 @@ $KAFKA_HOME/bin/kafka-console-consumer.sh --zookeeper localhost --topic tweet_co
 
 ## 4. Flink
 長いので[README](flink-sample-scala/README.md)切り出しました
+
+## Front: Dashboard
+[blur-admin] (http://akveo.com/blur-admin-mint/#/dashboard) がすごく良さそうなのでFrokしてsubtree追加しました
+
+```
+$ git remote add blur-admin git@github.com:ikuo-suyama/blur-admin.git
+$ git subtree add --prefix=dashboard --squash blur-admin master
+$ cd dashboard
+$ npm install
+$ gulp serve
+```
+
+### PubNubモジュールの追加
+pubnub-angular
+https://www.pubnub.com/blog/2014-05-15-bower-power-angularjs-now-pubnub-enabled/
+https://github.com/pubnub/pubnub-angular
+bower install --save pubnub pubnub-angular
+
+eon-chart
+https://libraries.io/bower/eon-chart
+bower install eon-chart --save
+
